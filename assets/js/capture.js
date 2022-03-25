@@ -1,7 +1,7 @@
 function capturePage() {
     html2canvas(document.querySelector("#capture")).then(canvas => {
       var image = canvas.toDataURL("img/png").replace("image/png", "image/octet-stream");
-      console.log(image);
+     
       // window.location.href = image;
       simulateDownloadImageClick(image,'ddc_moph.png')
     });
