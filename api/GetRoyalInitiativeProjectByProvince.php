@@ -6,10 +6,16 @@ if ($date == null) {
     $date = "";
 }
 
+$strJsonFileContents = file_get_contents("../configuration/config.json");
+$array = json_decode($strJsonFileContents, true);
+//var_dump($array); // print array
+// print_r($array);
+$domain = $array[0]['domain'];
+$apiKeyAdmin = $array[1]['apiKeyAdmin'];
 
 $curl = curl_init();
 curl_setopt_array($curl, array(
-    CURLOPT_URL => "http://110.164.203.27/ddc_moph/api/v1/GetRoyalInitiativeProjectByProvince?dateInput={$date}",
+    CURLOPT_URL => "http://$domain/ddc_moph/api/v1/GetRoyalInitiativeProjectByProvince?dateInput={$date}",
     CURLOPT_RETURNTRANSFER => true,
     CURLOPT_ENCODING  => "",
     CURLOPT_MAXREDIRS => 10,
@@ -18,7 +24,7 @@ curl_setopt_array($curl, array(
     CURLOPT_CUSTOMREQUEST => "GET",
     CURLOPT_POSTFIELDS => "",
     CURLOPT_HTTPHEADER => array(
-        "X-Api-Key:93802a3627b0df31078922aad9069734",
+        "X-Api-Key:$apiKeyAdmin",
         "Cache-Control: no-cache",
         "Content-Type: application/json"
     ),
