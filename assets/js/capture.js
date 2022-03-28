@@ -16,7 +16,7 @@ function capturePage() {
       accountForFirefox(clickLink, link);
     }
   }
-}
+
 
 function clickLink(link) {
   link.click();
